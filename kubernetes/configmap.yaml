@@ -1,0 +1,21 @@
+# configmap.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: casino-app-config
+  namespace: casino
+  labels:
+    app: casino-app
+    environment: production
+data:
+  config.json: |
+    {
+      "appName": "Casino Hello World",
+      "environment": "production",
+      "version": "1.0.0",
+      "port": 80,
+      "logging": {
+        "level": "info",
+        "format": "json"
+      }
+    }

@@ -1,0 +1,23 @@
+# ingress.yaml
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: casino-app-ingress
+  namespace: casino
+  labels:
+    app: casino-app
+    environment: production
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  rules:
+    - host: casino-app.example.com
+      http:
+        paths:
+          - path: /helloWorld
+            pathType: Prefix
+            backend:
+              service:
+                name: casino-app-service
+                port:
+                  number: 80

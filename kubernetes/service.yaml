@@ -1,0 +1,21 @@
+# service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: casino-app-service
+  namespace: casino
+  labels:
+    app: casino-app
+    environment: production
+  annotations:
+    prometheus.io/scrape: "true"
+    prometheus.io/port: "80"
+spec:
+  type: ClusterIP
+  ports:
+    - port: 80
+      targetPort: http
+      protocol: TCP
+      name: http
+  selector:
+    app: casino-app

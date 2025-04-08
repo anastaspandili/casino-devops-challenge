@@ -1,0 +1,14 @@
+# pdb.yaml
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: casino-app-pdb
+  namespace: casino
+  labels:
+    app: casino-app
+    environment: production
+spec:
+  minAvailable: 2
+  selector:
+    matchLabels:
+      app: casino-app
